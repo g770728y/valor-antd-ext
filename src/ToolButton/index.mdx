@@ -1,0 +1,24 @@
+---
+name: ToolButton
+route: /toolbutton
+order: 1
+sidebar: true
+---
+
+import { SimpleToolButton, DropdownToolButton, SplitToolButton } from '.'
+import 'antd/dist/antd.css';
+
+# ToolButton
+`ToolButton`表现行为, 类似于富文本顶部的小按钮. hover时有阴影
+## 3种ToolButton
+>
+SimpleToolButton, 仅可实现简单点击<br/>
+DropdownToolButton, 右侧显示下三角, 整体可点击, 点击后出现下拉框<br/>
+SplitToolButton, 右侧显示下三角. 左侧icon可响应点击事件, 右侧下三角区响应下拉事件
+
+<div style={{display:'flex'}}>
+  <SimpleToolButton icon={"B"} onClick={()=>console.log('clicked')} tip="simple-tool-button"/>
+  <DropdownToolButton icon={"D"}  tip="dropdown-tool-button" dropdown={<div>drop down</div>}/>
+  <SplitToolButton icon={'S'} onClick={()=>console.log('clicked')} dropdown={<div>drop down</div>} tip="split-tool-button"/>
+</div>
+

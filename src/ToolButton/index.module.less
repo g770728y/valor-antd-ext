@@ -1,0 +1,49 @@
+.container {
+  height: 26px;
+  display: flex;
+  align-items: center;
+
+  &-active {
+    color: #1ea7fd;
+  }
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.04);
+  }
+
+  .icon-container {
+    width: 26px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .icon-bottom {
+      position: absolute;
+      left: 5px;
+      right: 5px;
+      bottom: 3px;
+      border-bottom: 1px solid red;
+    }
+  }
+
+  .arrow-container {
+    width: 12px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &.split:hover {
+      background: rgba(0, 0, 0, 0.04);
+    }
+
+    .arrow {
+      background: url(data:image/svg+xml;base64,PHN2ZyBpZD0i5Zu+5bGCXzEiIGRhdGEtbmFtZT0i5Zu+5bGCIDEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDYgNSI+PGRlZnM+PHN0eWxlPi5jbHMtMXtvcGFjaXR5OjAuNDt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPuW3peWFt+agjy3kuIvmi4noj5zljZU8L3RpdGxlPjxnIGlkPSJTeW1ib2xzIiBjbGFzcz0iY2xzLTEiPjxnIGlkPSJFeGNlbC3lt6XlhbfmoI8iPjxnIGlkPSLliIbnu4QtNCI+PHBvbHlnb24gaWQ9IlJlY3RhbmdsZS1Db3B5LTIiIHBvaW50cz0iMCAwLjY2IDYgMC42NiAzLjAxIDQuNjYgMCAwLjY2Ii8+PC9nPjwvZz48L2c+PC9zdmc+);
+      background-repeat: no-repeat;
+      background-size: 6px;
+      width: 7px;
+      height: 4px;
+    }
+  }
+}
