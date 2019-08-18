@@ -1,6 +1,6 @@
 {
   "name": "valor-antd-ext",
-  "version": "0.0.1",
+  "version": "1.0.5",
   "description": "ant design 扩展",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",
@@ -21,10 +21,14 @@
   },
   "devDependencies": {
     "typescript": "^3.3.3",
-    "umi-library": "^1.1.1"
+    "umi-library": "^1.1.1",
+    "@types/react": "^16.9.1",
+    "antd": "^3.21.4",
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
   },
   "license": "MIT",
   "dependencies": {
   },
-  "files": ["./dist/"]
+  "files": ["dist"]
 }

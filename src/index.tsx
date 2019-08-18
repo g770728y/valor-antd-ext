@@ -1,1 +1,1 @@
-import React from 'react';
+export { SimpleToolButton, DropdownToolButton, SplitToolButton } from './ToolButton/';

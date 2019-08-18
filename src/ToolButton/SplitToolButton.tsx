@@ -9,6 +9,8 @@ interface Props {
   showBottomLine?: boolean;
   onClick: () => void;
   dropdown?: React.ReactElement;
+  actived?: boolean;
+  disabled?: boolean;
 }
 const SplitToolButton: React.FC<Props> = ({
   IconComponent,
@@ -17,6 +19,8 @@ const SplitToolButton: React.FC<Props> = ({
   showBottomLine: bottom,
   onClick,
   dropdown,
+  actived = false,
+  disabled = false,
 }) => {
   const [tooltipVisible, setTooltipVisible] = React.useState<boolean>(false);
 
@@ -26,9 +30,12 @@ const SplitToolButton: React.FC<Props> = ({
     }
   }, []);
   const IconComponent_ = IconComponent!;
+  const containerStyles = `${styles['container']} ${actived ? styles['container-actived'] : ''} ${
+    disabled ? styles['container-disabled'] : ''
+  }`;
   const overlay = (
-    <div className={styles['container']}>
-      <div className={styles['icon-container']} onClick={onClick}>
+    <div className={containerStyles}>
+      <div className={styles['icon-container']} onClick={() => !disabled && onClick()}>
         {icon || <IconComponent_ />}
         {bottom && <div className={styles['icon-bottom']} />}
       </div>
@@ -36,6 +43,7 @@ const SplitToolButton: React.FC<Props> = ({
         overlay={dropdown}
         trigger={['click']}
         onVisibleChange={handleDropdownVisibleChanged}
+        disabled={disabled}
       >
         <div className={`${styles['arrow-container']} ${styles['split']}`}>
           <div className={styles['arrow']} />
@@ -44,7 +52,9 @@ const SplitToolButton: React.FC<Props> = ({
     </div>
   );
 
-  return (
+  return disabled ? (
+    overlay
+  ) : (
     <Tooltip visible={tooltipVisible} placement="bottom" title={tip}>
       {overlay}
     </Tooltip>
