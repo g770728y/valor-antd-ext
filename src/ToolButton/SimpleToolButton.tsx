@@ -8,6 +8,8 @@ interface Props {
   tip: string;
   showBottomLine?: boolean;
   onClick: () => void;
+  actived?: boolean;
+  disabled?: boolean;
 }
 const SimpleToolButton: React.FC<Props> = ({
   IconComponent,
@@ -15,19 +17,25 @@ const SimpleToolButton: React.FC<Props> = ({
   tip,
   showBottomLine: bottom,
   onClick,
+  actived = false,
+  disabled = false,
 }) => {
-  console.log('tip', tip);
   const IconComponent_ = IconComponent!;
+  const containerStyles = `${styles['container']} ${actived ? styles['container-actived'] : ''} ${
+    disabled ? styles['container-disabled'] : ''
+  }`;
   const overlay = (
-    <div className={styles['container']}>
-      <div className={styles['icon-container']} onClick={onClick}>
+    <div className={containerStyles}>
+      <div className={styles['icon-container']} onClick={() => !disabled && onClick()}>
         {icon || <IconComponent_ />}
         {bottom && <div className={styles['icon-bottom']} />}
       </div>
     </div>
   );
 
-  return (
+  return disabled ? (
+    overlay
+  ) : (
     <Tooltip placement="bottom" title={tip}>
       {overlay}
     </Tooltip>

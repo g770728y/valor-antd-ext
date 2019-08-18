@@ -8,6 +8,8 @@ interface Props {
   tip: string;
   showBottomLine?: boolean;
   dropdown?: React.ReactElement;
+  actived?: boolean;
+  disabled?: boolean;
 }
 const DropdownToolButton: React.FC<Props> = ({
   IconComponent,
@@ -15,6 +17,8 @@ const DropdownToolButton: React.FC<Props> = ({
   tip,
   showBottomLine: bottom,
   dropdown,
+  actived = false,
+  disabled = false,
 }) => {
   const IconComponent_ = IconComponent!;
   const [tooltipVisible, setTooltipVisible] = React.useState<boolean>(false);
@@ -24,8 +28,11 @@ const DropdownToolButton: React.FC<Props> = ({
       setTooltipVisible(false);
     }
   }, []);
+  const containerStyles = `${styles['container']} ${actived ? styles['container-actived'] : ''} ${
+    disabled ? styles['container-disabled'] : ''
+  }`;
   const overlay = (
-    <div className={styles['container']}>
+    <div className={containerStyles}>
       <div className={styles['icon-container']}>
         {icon || <IconComponent_ />}
         {bottom && <div className={styles['icon-bottom']} />}
@@ -36,15 +43,22 @@ const DropdownToolButton: React.FC<Props> = ({
     </div>
   );
 
-  return (
+  const dropdownView = (
+    <Dropdown
+      overlay={dropdown}
+      trigger={['click']}
+      onVisibleChange={handleDropdownVisibleChanged}
+      disabled={disabled}
+    >
+      {overlay}
+    </Dropdown>
+  );
+
+  return disabled ? (
+    dropdownView
+  ) : (
     <Tooltip visible={tooltipVisible} placement="bottom" title={tip}>
-      <Dropdown
-        overlay={dropdown}
-        trigger={['click']}
-        onVisibleChange={handleDropdownVisibleChanged}
-      >
-        {overlay}
-      </Dropdown>
+      {dropdownView}
     </Tooltip>
   );
 };
