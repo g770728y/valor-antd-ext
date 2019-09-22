@@ -3,6 +3,8 @@ import styles from './index.module.less';
 import { Tooltip, Dropdown } from 'antd';
 
 interface Props {
+  // 当即将显示下拉框时的回调
+  onBeforeDropdown?: () => void;
   IconComponent?: React.FunctionComponent;
   icon?: React.ReactElement;
   tip: string;
@@ -12,6 +14,7 @@ interface Props {
   disabled?: boolean;
 }
 const DropdownToolButton: React.FC<Props> = ({
+  onBeforeDropdown,
   IconComponent,
   icon,
   tip,
@@ -25,6 +28,7 @@ const DropdownToolButton: React.FC<Props> = ({
 
   const handleDropdownVisibleChanged = React.useCallback((dropdownVisible: boolean) => {
     if (dropdownVisible) {
+      onBeforeDropdown && onBeforeDropdown();
       setTooltipVisible(false);
     }
   }, []);

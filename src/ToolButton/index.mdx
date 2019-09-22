@@ -25,7 +25,7 @@ SplitToolButton, 右侧显示下三角. 左侧icon可响应点击事件, 右侧�
 <h4>actived</h4>
 <div style={{display:'flex'}}>
   <SimpleToolButton icon={"B"} onClick={()=>console.log('clicked')} tip="simple-tool-button" actived/>
-  <DropdownToolButton icon={"D"}  tip="dropdown-tool-button" dropdown={<div>drop down</div>} actived/>
+  <DropdownToolButton icon={"D"}  tip="dropdown-tool-button" dropdown={<div>drop down</div>} actived  onBeforeDropdown={()=>console.log('onBeforeDropdown')}/>
   <SplitToolButton icon={'S'} onClick={()=>console.log('clicked')} dropdown={<div>drop down</div>} tip="split-tool-button" actived/>
 </div>
 <br/>
@@ -35,4 +35,3 @@ SplitToolButton, 右侧显示下三角. 左侧icon可响应点击事件, 右侧�
   <DropdownToolButton icon={"D"}  tip="dropdown-tool-button" dropdown={<div>drop down</div>} disabled/>
   <SplitToolButton icon={'S'} onClick={()=>console.log('clicked')} dropdown={<div>drop down</div>} tip="split-tool-button" disabled/>
 </div>
-
