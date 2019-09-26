@@ -1,0 +1,31 @@
+---
+name: MediaPreviewDialog
+route: /media-preview-dialog
+order: 2
+sidebar: true
+---
+
+import {openMediaPreviewDialog} from '.'
+import {Button} from 'antd';
+import 'antd/dist/antd.css';
+
+# MediaPreviewDialog
+注意: 请先在8080端口运行../file-server, 否则无法找到文件!!!<br/>
+点击按钮, 显示对话框
+
+## excel
+https://view.officeapps.live.com/op/view.aspx 只能预览: 使用域名的url, 并且不能有跨文件关联, 并且5M 以下
+所以只好提供下载了
+
+<Button onClick={()=>{openMediaPreviewDialog({url:'http://localhost:8080/8M.xls', size:8*1024*1024, fileName: '测试文件excel.xls'})}} >
+  点我显示 excel(大于5M)
+</Button>
+
+
+<hr/>
+
+<Button onClick={()=>{openMediaPreviewDialog({url:'http://localhost:8080/zhifubao.pdf', fileName: '测试文件.pdf'})}} >
+  点我显示 pdf 对话框
+</Button>
+
+
