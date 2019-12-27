@@ -1,6 +1,6 @@
 {
   "name": "valor-antd-ext",
-  "version": "1.0.7",
+  "version": "1.0.9",
   "description": "ant design 扩展",
   "main": "dist/index.js",
   "module": "dist/index.esm.js",

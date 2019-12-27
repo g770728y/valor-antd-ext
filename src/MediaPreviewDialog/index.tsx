@@ -46,7 +46,7 @@ export function openMediaPreviewDialog(args: {
   type?: string;
 }) {
   const fileName = args.fileName || filename(args.url);
-  const ext = getFileExt(fileName!);
+  const ext = getFileExt(args.url!);
 
   const type =
     args.type ||
